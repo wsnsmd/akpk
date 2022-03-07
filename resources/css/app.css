@@ -1,0 +1,38 @@
+/* Base */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+
+/* Components */
+@import 'components/button';
+@import 'components/form';
+
+/* Utilities */
+@import 'tailwindcss/utilities';
+
+/* .rdt_TableRow{
+    @apply text-sm;
+} */
+.rdt_TableCol{
+    @apply px-6 py-3 border-b border-t border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+}
+/* .rdt_TableCol_Sortable{
+    @apply bg-yellow-500;
+} */
+.rdt_TableCell{
+    @apply text-sm;
+}
+/* .rdt_TableHeader{
+    @apply text-xs font-bold;
+}  */
+/* .rdt_TableFooter{
+    @apply bg-yellow-500;
+} */
+/* .rdt_TableHead{
+    @apply bg-yellow-500;
+} */
+/* .rdt_TableBody{
+    @apply bg-yellow-500;
+} */
+/* .rdt_ExpanderRow{
+    @apply bg-yellow-500;
+} */
