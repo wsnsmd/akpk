@@ -43,7 +43,7 @@ const Create = () => {
           <form name="createForm" onSubmit={handleSubmit}>
             <div className="flex flex-wrap p-8 -mb-8 -mr-6">
               <TextInput
-                className="w-full pb-8 pr-6 lg:w-1/2"
+                className="w-full pb-4 pr-6 lg:w-1/2"
                 label="Nama Lengkap"
                 name="name"
                 errors={errors.name}
@@ -52,7 +52,7 @@ const Create = () => {
                 onChange={e => setData('name', e.target.value)}
               />
               <TextInput
-                className="w-full pb-8 pr-6 lg:w-1/2"
+                className="w-full pb-4 pr-6 lg:w-1/2"
                 label="Nama Singkat"
                 name="singkat"
                 errors={errors.singkat}
@@ -60,7 +60,7 @@ const Create = () => {
                 onChange={e => setData('singkat', e.target.value)}
               />
               <TextInput
-                className="w-full pb-8 pr-6 lg:w-1/2"
+                className="w-full pb-4 pr-6 lg:w-1/2"
                 label="Username"
                 name="username"
                 errors={errors.username}
@@ -69,7 +69,7 @@ const Create = () => {
                 onChange={e => setData('username', e.target.value)}
               />
               <TextInput
-                className="w-full pb-8 pr-6 lg:w-1/2"
+                className="w-full pb-4 pr-6 lg:w-1/2"
                 label="Password"
                 name="password"
                 type="password"
@@ -79,7 +79,7 @@ const Create = () => {
                 onChange={e => setData('password', e.target.value)}
               />
               <TextInput
-                className="w-full pb-8 pr-6 lg:w-1/2"
+                className="w-full pb-4 pr-6 lg:w-1/2"
                 label="No Handphone"
                 name="hp"
                 errors={errors.hp}
@@ -87,7 +87,7 @@ const Create = () => {
                 onChange={e => setData('hp', e.target.value)}
               />
               <SelectInput
-                className="w-full pb-8 pr-6 lg:w-1/2"
+                className="w-full pb-4 pr-6 lg:w-1/2"
                 label="Level"
                 name="level"
                 errors={errors.level}
@@ -116,7 +116,7 @@ const Create = () => {
                 type="submit"
                 className="ml-auto flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
               >
-                Create
+                Simpan
               </LoadingButton>
             </div>
           </form>

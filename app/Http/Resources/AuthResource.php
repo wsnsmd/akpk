@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Avatar;
 
 class AuthResource extends JsonResource
 {
@@ -19,7 +20,7 @@ class AuthResource extends JsonResource
             'username' => $this->username,
             'name' => $this->name,
             'level' => $this->level,
-            'photo' => $this->photo,
+            'photo' => Avatar::create($this->name)->toBase64(),
             'deleted_at' => $this->deleted_at,            
         ];
     }

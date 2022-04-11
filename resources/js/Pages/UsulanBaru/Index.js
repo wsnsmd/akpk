@@ -31,6 +31,10 @@ const Index = () => {
       selector: row => row.nama,
     },
     {
+      name: 'Jenis',
+      selector: row => row.param,
+    },
+    {
       name: 'Keterangan',
       selector: row => row.keterangan,
     },

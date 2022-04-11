@@ -99,7 +99,7 @@ export default function Layout({ title, children }) {
             <img src={Logo} className="w-auto" alt="akpk" />
           </div>
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="h-0 flex-1 flex flex-col overflow-y-auto">
+          <div className="h-0 flex-1 flex flex-col overflow-y-auto scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-gray-400">
             {/* User account dropdown */}
             <Menu as="div" className="px-3 mt-6 relative inline-block text-left">
               <div>
@@ -108,7 +108,7 @@ export default function Layout({ title, children }) {
                     <span className="flex min-w-0 items-center justify-between space-x-3">
                       <img
                         className="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0"
-                        src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                        src={auth.user.photo}
                         alt=""
                       />
                       <span className="flex-1 flex flex-col min-w-0">
@@ -227,7 +227,7 @@ export default function Layout({ title, children }) {
                     <span className="sr-only">Open user menu</span>
                     <img
                       className="h-8 w-8 rounded-full"
-                      src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      src={auth.user.photo}
                       alt=""
                     />
                   </Menu.Button>

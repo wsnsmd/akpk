@@ -54,6 +54,7 @@ class UbarController extends Controller
             $ubar->admin_id = $user->id;
             $ubar->nama = $request->nama;
             $ubar->keterangan = $request->keterangan;
+            $ubar->param = $request->param;
             $ubar->tahun = $this->apps_tahun;
 
             if($ubar->save())

@@ -10,8 +10,8 @@ import Logo from '@/Assets/logo.png'
 export default () => {
   const { tahun, setting } = usePage().props;
   const { data, setData, errors, post, processing } = useForm({
-    username: 'wsnsmd',
-    password: 'secret',
+    username: '',
+    password: '',
     tahun: setting.tahun
   });
 
@@ -28,7 +28,7 @@ export default () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-center py-8 sm:px-6 lg:px-8 bg-fixed bg-center bg-cover bg-no-repeat" style={{backgroundImage: `url("/img/login4.jpg")`}}>
-      <Helmet title="Login" />
+      <Helmet titleTemplate="%s | BPSDM Prov. Kaltim" title="Login" />
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <div className="bg-yellow-600 py-8 px-4 shadow sm:px-10">
           <img src={Logo} className="block w-full max-w-xs mx-auto text-white fill-current" height={50} />

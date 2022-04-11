@@ -25,6 +25,8 @@ class UbarStoreRequest extends FormRequest
     {
         return [
             'nama' => ['required'],
+            'keterangan' => ['required'],
+            'param' => ['required'],
         ];
     }
 }

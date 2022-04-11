@@ -25,7 +25,8 @@ class UbarUpdateRequest extends FormRequest
     {
         return [
             'nama' => ['required'],
-            'keterangan' => ['nullable'],
+            'keterangan' => ['required'],
+            'param' => ['required'],
         ];
     }
 }

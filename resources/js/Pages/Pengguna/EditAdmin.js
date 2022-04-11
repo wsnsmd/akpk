@@ -45,7 +45,7 @@ const Edit = () => {
           <form name="createForm" onSubmit={handleSubmit}>
             <div className="flex flex-wrap p-8 -mb-8 -mr-6">
               <TextInput
-                className="w-full pb-8 pr-6 lg:w-1/2"
+                className="w-full pb-4 pr-6 lg:w-1/2"
                 label="Nama Lengkap"
                 name="name"
                 errors={errors.name}
@@ -54,7 +54,7 @@ const Edit = () => {
                 onChange={e => setData('name', e.target.value)}
               />
               <TextInput
-                className="w-full pb-8 pr-6 lg:w-1/2"
+                className="w-full pb-4 pr-6 lg:w-1/2"
                 label="Nama Singkat"
                 name="singkat"
                 errors={errors.singkat}
@@ -62,7 +62,7 @@ const Edit = () => {
                 onChange={e => setData('singkat', e.target.value)}
               />
               <TextInput
-                className="w-full pb-8 pr-6 lg:w-1/2"
+                className="w-full pb-4 pr-6 lg:w-1/2"
                 label="Username"
                 name="username"
                 errors={errors.username}
@@ -71,7 +71,7 @@ const Edit = () => {
                 onChange={e => setData('username', e.target.value)}
               />
               <TextInput
-                className="w-full pb-8 pr-6 lg:w-1/2"
+                className="w-full pb-4 pr-6 lg:w-1/2"
                 label="Password"
                 name="password"
                 type="password"
@@ -81,7 +81,7 @@ const Edit = () => {
                 onChange={e => setData('password', e.target.value)}
               />
               <TextInput
-                className="w-full pb-8 pr-6 lg:w-1/2"
+                className="w-full pb-4 pr-6 lg:w-1/2"
                 label="No Handphone"
                 name="hp"
                 errors={errors.hp}
@@ -89,7 +89,7 @@ const Edit = () => {
                 onChange={e => setData('hp', e.target.value)}
               />
               <SelectInput
-                className="w-full pb-8 pr-6 lg:w-1/2"
+                className="w-full pb-4 pr-6 lg:w-1/2"
                 label="Level"
                 name="level"
                 errors={errors.level}
@@ -97,7 +97,7 @@ const Edit = () => {
                 require={true}
                 onChange={e => setData('level', e.target.value)}
               >
-                <option value="" disabled selected>-- Pilih Level --</option>
+                <option value="" disabled>-- Pilih Level --</option>
                 <option value="1">Administrator</option>
                 <option value="2">Kabupaten/Kota</option>
                 <option value="3">Perangkat Daerah</option>

@@ -35,42 +35,6 @@ const Index = () => {
   }
 
   function destroy(id) {
-    // const swalDelete = Swal.mixin({
-    //   customClass: {
-    //     confirmButton: 'order-0 items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:order-1 sm:ml-3',
-    //     cancelButton: 'order-0 items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:order-1 sm:ml-3'
-    //   },
-    //   buttonsStyling: false
-    // })
-    
-    // swalDelete.fire({
-    //   title: 'Are you sure?',
-    //   text: "You won't be able to revert this!",
-    //   icon: 'warning',
-    //   showCancelButton: true,
-    //   confirmButtonText: 'Yes, delete it!',
-    //   cancelButtonText: 'No, cancel!',
-    //   reverseButtons: false
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     swalDelete.fire(
-    //       'Deleted!',
-    //       'Your file has been deleted.',
-    //       'success'
-    //     )
-    //   } else if (
-    //     /* Read more about handling dismissals below */
-    //     result.dismiss === Swal.DismissReason.cancel
-    //   ) {
-    //     swalDelete.fire(
-    //       'Cancelled',
-    //       'Your imaginary file is safe :)',
-    //       'error'
-    //     )
-    //   }
-    // })
-    // const hasil = delData().then;
-    // console.log(hasil);
     delData().then((result) => {
       if (result.isConfirmed) {
         Inertia.delete(route('pengguna.admin.destroy', id));
@@ -89,7 +53,7 @@ const Index = () => {
             className="order-0 items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:order-1 sm:ml-3"
             href={route('pengguna.admin.create')}
           >
-            <span>Create</span>
+            <span>Tambah</span>
           </InertiaLink>
         </div>
       </div>

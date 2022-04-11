@@ -1,11 +1,14 @@
 import React from 'react';
 
-export default ({ label, name, className, errors = [], ...props }) => {
+export default ({ label, name, className, errors = [], require = false, ...props }) => {
   return (
     <div className={className}>
       {label && (
         <label className="block text-sm font-medium text-gray-700" htmlFor={name}>
           {label}
+          {require && (
+            <span className="text-red-500"> *</span>
+          )}
         </label>
       )}
       <div className="mt-1">

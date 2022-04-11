@@ -4,11 +4,13 @@ import Layout from '@/Components/Layout2';
 import LoadingButton from '@/Shared/LoadingButton';
 import TextInput from '@/Components/TextInput';
 import TextAreaInput from '@/Components/TextAreaInput';
+import SelectInput from '@/Components/SelectInput';
 
 const Create = () => {
   const { data, setData, errors, post, processing } = useForm({
     nama: '',
     keterangan: '',
+    param: '',
   });
   
   function handleSubmit(e) {
@@ -36,6 +38,20 @@ const Create = () => {
         <div className="max-w-3xl overflow-hidden bg-white rounded shadow">
           <form name="createForm" onSubmit={handleSubmit}>
             <div className="flex flex-wrap p-8 -mb-8 -mr-6">
+              <SelectInput
+                className="w-full pb-4 pr-6"
+                label="Jenis Pelatihan"
+                name="jenis"
+                errors={errors.param}
+                value={data.param}
+                onChange={e => setData('param', e.target.value)}
+                require={true}
+              >
+                <option value="" disabled>-- Pilih Jenis --</option>
+                <option value="Teknis">Teknis</option>
+                <option value="Fungsional">Fungsional</option>
+                <option value="Lain-lain">Lain-lain</option>
+              </SelectInput>
               <TextInput
                 className="w-full pb-4 pr-6"
                 label="Nama Pelatihan"
