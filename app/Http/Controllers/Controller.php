@@ -28,13 +28,13 @@ class Controller extends BaseController
 
     public function checkPeda()
     {
-        if(!Auth::user()->hasRole('pd'))
+        if(!Auth::user()->hasRole('pd') && !Auth::user()->hasRole('admin'))
             abort(403);
     }
 
     public function checkKabkot()
     {
-        if(!Auth::user()->hasRole('kabkot'))
+        if(!Auth::user()->hasRole('kabkot') && !Auth::user()->hasRole('admin'))
             abort(403);
     }
 }

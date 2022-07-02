@@ -44,7 +44,7 @@ const Edit = () => {
         </div>
       </div>
       <div className="overflow-x-auto p-6">
-        <div className="max-w-3xl overflow-hidden bg-white rounded shadow">
+        <div className="w-full overflow-hidden bg-white rounded shadow">
           <form name="createForm" onSubmit={handleSubmit}>
             <div className="flex flex-wrap p-8 -mb-8 -mr-6">
               <TextInput

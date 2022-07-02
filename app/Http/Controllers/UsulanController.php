@@ -408,7 +408,7 @@ class UsulanController extends Controller
 
     public function checkOwner($object)
     {
-        if(!Auth::user()->owns($object, 'admin_id'))
+        if(!Auth::user()->owns($object, 'admin_id') && !Auth::user()->hasRole('admin'))
             abort(403);
     }
 }
