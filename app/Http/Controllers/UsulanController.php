@@ -171,6 +171,11 @@ class UsulanController extends Controller
                 ->where('tahun', $this->apps_tahun)
                 ->get()
             ),
+            'ubar' => UbarResource::collection(
+                Ubar::where('admin_id', Auth::user()->id)
+                ->where('tahun', $this->apps_tahun)
+                ->get()
+            ),
             'kabkot' => $kabkot,
         ]);
     }
