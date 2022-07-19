@@ -140,6 +140,13 @@ const Index = () => {
     return rowt++;
   }
 
+  const getRowsUbar = () => {
+    if(rowbar > dtUbar.length)
+      rowbar = 1;
+    
+    return rowbar++;
+  }
+
   function getDataTable() {
     axios.post(route('usulan.data.show'), {
       admin_id: data.admin_id,
