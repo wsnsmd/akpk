@@ -25,7 +25,8 @@ class UbarController extends Controller
                 Ubar::where('admin_id', Auth::user()->id)
                 ->where('tahun', $this->apps_tahun)
                 ->get()
-            )
+            ),
+            'inputdata' => $this->apps_input,
         ]);
     }
 
@@ -36,6 +37,7 @@ class UbarController extends Controller
      */
     public function create()
     {
+        $this->checkInput();
         return Inertia::render('UsulanBaru/Create');
     }
 
@@ -84,6 +86,7 @@ class UbarController extends Controller
     public function edit(Ubar $ubar)
     {
         $this->checkOwner($ubar);
+        $this->checkInput();
         return Inertia::render('UsulanBaru/Edit', [
             'ubar' => new UbarResource($ubar),
         ]);
@@ -111,13 +114,14 @@ class UbarController extends Controller
      */
     public function destroy(Ubar $ubar)
     {
+        $this->checkInput();
         $ubar->delete();
         return Redirect::route('ubar.index')->with('success', 'Usulan pelatihan baru berhasil dihapus.');
     }
 
     public function checkOwner($object)
     {
-        if(!Auth::user()->owns($object, 'admin_id'))
+        if(!Auth::user()->owns($object, 'admin_id') && !Auth::user()->hasRole('admin'))
             abort(403);
     }
 }

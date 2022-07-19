@@ -13,15 +13,19 @@ use App\Http\Resources\JenisResource;
 use App\Http\Resources\UsulanResource;
 use App\Http\Resources\PedaResource;
 use App\Http\Resources\KabkotResource;
+use App\Http\Resources\UbarResource;
 use App\Models\Usulan;
 use App\Models\Pelatihan;
 use App\Models\Jenis;
 use App\Models\Peda;
 use App\Models\Kabkot;
+use App\Models\Ubar;
 use App\Http\Requests\UsulanPedaStoreRequest;
 use App\Http\Requests\UsulanPedaUpdateRequest;
 use App\Http\Requests\UsulanKabkotStoreRequest;
 use App\Http\Requests\UsulanKabkotUpdateRequest;
+use App\Http\Requests\UbarStoreRequest;
+use App\Http\Requests\UbarUpdateRequest;
 
 use Storage;
 
@@ -126,6 +130,11 @@ class UsulanController extends Controller
                 ->where('tahun', $this->apps_tahun)
                 ->get()
             ),
+            'ubar' => UbarResource::collection(
+                Ubar::where('admin_id', Auth::user()->id)
+                ->where('tahun', $this->apps_tahun)
+                ->get()
+            ),
             'peda' => $peda,
         ]);
     }
@@ -134,8 +143,14 @@ class UsulanController extends Controller
     {
         $request = Request::all();
 
-        $data = UsulanResource::collection(
+        $data = [];
+        $data['usulan'] = UsulanResource::collection(
             Usulan::where('admin_id', $request['admin_id'])
+                ->where('tahun', $this->apps_tahun)
+                ->get()
+        );
+        $data['ubar'] = UbarResource::collection(
+            Ubar::where('admin_id', $request['admin_id'])
                 ->where('tahun', $this->apps_tahun)
                 ->get()
         );
@@ -161,14 +176,15 @@ class UsulanController extends Controller
     }
 
     public function indexPeda()
-    {
+    {        
         $this->checkPeda();
         return Inertia::render('Usulan/IndexPeda', [
             'usulan' => UsulanResource::collection(
                 Usulan::where('admin_id', Auth::user()->id)
                 ->where('tahun', $this->apps_tahun)
                 ->get()
-            )
+            ),
+            'inputdata' => $this->apps_input,
         ]);
     }
 
@@ -186,6 +202,7 @@ class UsulanController extends Controller
     public function createPeda()
     {
         $this->checkPeda();
+        $this->checkInput();
         return Inertia::render('Usulan/CreatePeda', [
             'jenis' => JenisResource::collection(Jenis::all()),
         ]);
@@ -226,6 +243,7 @@ class UsulanController extends Controller
     {
         $this->checkPeda();
         $this->checkOwner($usulan);
+        $this->checkInput();
 
         return Inertia::render('Usulan/EditPeda', [
             'usulan' => new UsulanResource($usulan),
@@ -257,6 +275,7 @@ class UsulanController extends Controller
     public function destroyPeda(Usulan $usulan)
     {
         $this->checkPeda();
+        $this->checkInput();
         $file = $usulan->lampiran;
         $usulan->delete();
         Storage::delete($file);
@@ -264,7 +283,7 @@ class UsulanController extends Controller
     }
 
     public function indexKabkot()
-    {
+    {        
         $this->checkKabkot();
         return Inertia::render('Usulan/IndexKabkot', [
             'usulan' => UsulanResource::collection(
@@ -289,6 +308,7 @@ class UsulanController extends Controller
     public function createKabkot()
     {
         $this->checkKabkot();
+        $this->checkInput();
         return Inertia::render('Usulan/CreateKabkot', [
             'jenis' => JenisResource::collection(Jenis::all()),
         ]);
@@ -330,6 +350,7 @@ class UsulanController extends Controller
     {
         $this->checkKabkot();
         $this->checkOwner($usulan);
+        $this->checkInput();
 
         return Inertia::render('Usulan/EditKabkot', [
             'usulan' => new UsulanResource($usulan),
@@ -361,6 +382,8 @@ class UsulanController extends Controller
 
     public function destroyKabkot(Usulan $usulan)
     {
+        $this->checkKabkot();
+        $this->checkInput();
         $file = $usulan->lampiran;
         $usulan->delete();
         Storage::delete($file);

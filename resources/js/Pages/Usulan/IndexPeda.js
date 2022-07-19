@@ -16,7 +16,7 @@ const paginationComponentOptions = {
 };
 
 const Index = () => {
-  const { usulan } = usePage().props;
+  const { usulan, inputdata } = usePage().props;
   let rowt = 1;
 
   const columns = useMemo(() => [
@@ -102,14 +102,16 @@ const Index = () => {
           <h1 className="text-lg font-medium leading-6 text-gray-900 sm:truncate">Usulan Pelatihan</h1>
         </div>
       </div>
-      <div className="flex items-center justify-between m-6">
+      {inputdata &&
+      <div className="flex items-center justify-between m-6">        
         <InertiaLink
           className="order-0 items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:order-1 sm:ml-3"
           href={route('usulan.index.peda.create')}
         >
           <span>Tambah</span>
-        </InertiaLink>
+        </InertiaLink>        
       </div>
+      }
       <div className="overflow-x-auto bg-white rounded shadow">
         <DataTable
           persistTableHead={true}

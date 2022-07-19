@@ -62,6 +62,7 @@ class HandleInertiaRequests extends Middleware
                 return [
                     'copyright' => $setting[2]->value,
                     'tahun' => $setting[3]->value,
+                    'inputdata' => $setting[4]->value,
                 ];
             },
         ]);

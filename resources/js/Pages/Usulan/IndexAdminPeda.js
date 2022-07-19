@@ -18,28 +18,29 @@ const paginationComponentOptions = {
   noRowsPerPage: true
 };
 
-const TitleHeader = () => {
+const TitleHeader = ({ title='Default' }) => {
   return (
     <div className="px-4 py-4 sm:flex sm:items-center sm:justify-between sm:px-2 lg:px-4">
       <div className="flex-1 min-w-0 py-2">
-        <h1 className="text-lg font-medium leading-6 text-gray-900 sm:truncate">Usulan Pelatihan Perangkat Daerah</h1>
+        <h1 className="text-lg font-medium leading-6 text-gray-900 sm:truncate">{title}</h1>
       </div>
     </div>
   )
 }
 
 const Index = () => {
-  const { usulan, peda } = usePage().props;
+  const { usulan, ubar, peda } = usePage().props;
   const { data, setData, errors, post } = useForm({
     admin_id: '',
   });
-  let rowt = 1;
+  let rowt = 1, rowbar = 1;
   const [loading, setLoading] = useState(false);
   const [dataTable, setDataTable] = useState(usulan);
+  const [dtUbar, setDtUbar] = useState(ubar);
   const [selectedRows, setSelectedRows] = useState([]);
   const [toggleCleared, setToggleCleared] = useState(false);
 
-  const columns = useMemo(() => [
+  const colUsulan = useMemo(() => [
     {
       name: '#',
       cell: (id) =>
@@ -85,8 +86,51 @@ const Index = () => {
     }
   ])
 
+  const colUbar = useMemo(() => [
+    {
+      name: '#',
+      cell: (id) =>
+        <span>{getRowsUbar()}</span>,
+      width: '70px',
+    },
+    {
+      name: 'Pelatihan',
+      selector: row => row.nama,
+    },
+    {
+      name: 'Jenis',
+      selector: row => row.param,
+    },
+    {
+      name: 'Keterangan',
+      selector: row => row.keterangan,
+    },
+    {
+      cell: (row) =>
+      <>
+        <button
+          className="flex items-center focus:outline-none"
+          title="Edit"
+          onClick={() => editUbar(row.id)}
+        >
+          <PencilAltIcon
+            className="mr-2 h-5 w-5 text-green-500 hover:text-green-600"
+            aria-hidden="true"
+          />
+        </button>
+      </>,
+      ignoreRowClick: true,
+      allowOverflow: true,
+      button: true,
+    }
+  ])
+
   const edit = (id) => {
     Inertia.get(route('usulan.index.peda.edit', id));
+  }
+
+  const editUbar = (id) => {
+    Inertia.get(route('ubar.edit', id))
   }
 
   const getRows = () => {
@@ -96,12 +140,20 @@ const Index = () => {
     return rowt++;
   }
 
+  const getRowsUbar = () => {
+    if(rowbar > dtUbar.length)
+      rowbar = 1;
+    
+    return rowbar++;
+  }
+
   function getDataTable() {
     axios.post(route('usulan.data.show'), {
       admin_id: data.admin_id,
     }).then((res) => {
       if(res) {
-        setDataTable(res.data);
+        setDataTable(res.data.usulan);
+        setDtUbar(res.data.ubar);
       }
     })
   }
@@ -176,19 +228,31 @@ const Index = () => {
           </div>
         </form>
       </div>
-      {/* <div className="px-4 py-4 bg-white">
-        <button onClick={handleHapus} className="ustify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700">Hapus</button>
-      </div> */}
-      <div className="overflow-x-auto bg-white rounded shadow">
+      <div className="overflow-x-auto bg-white rounded shadow border-b-2">
         <DataTable
-          title={<TitleHeader />}
+          title={<TitleHeader title='Usulan Pelatihan' />}
           selectableRows
           contextActions={contextActions}
           onSelectedRowsChange={handleRowSelected}
           clearSelectedRows={toggleCleared}
           persistTableHead={true}
-          columns={columns}
+          columns={colUsulan}
           data={dataTable}
+          paginationComponentOptions={paginationComponentOptions}
+          paginationPerPage={10}
+          pagination
+          highlightOnHover
+          pointerOnHover
+          noDataComponent={<NoDataComp />}
+        />
+      </div>
+      <div className="overflow-x-auto rounded shadow mx-100">
+        <DataTable
+          title={<TitleHeader title='Usulan Pelatihan Baru' />}
+          onSelectedRowsChange={handleRowSelected}
+          persistTableHead={true}
+          columns={colUbar}
+          data={dtUbar}
           paginationComponentOptions={paginationComponentOptions}
           paginationPerPage={10}
           pagination
