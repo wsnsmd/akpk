@@ -298,7 +298,8 @@ class UsulanController extends Controller
                 Usulan::where('admin_id', Auth::user()->id)
                 ->where('tahun', $this->apps_tahun)
                 ->get()
-            )
+            ),
+            'inputdata' => $this->apps_input,
         ]);
     }
 

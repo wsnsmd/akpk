@@ -19,6 +19,7 @@ const paginationComponentOptions = {
 
 const Index = () => {
   const { usulan, inputdata } = usePage().props;
+  console.log(inputdata);
   let rowt = 1;
 
   const columns = useMemo(() => [

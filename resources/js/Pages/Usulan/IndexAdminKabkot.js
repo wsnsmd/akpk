@@ -40,6 +40,12 @@ const Index = () => {
   const [selectedRows, setSelectedRows] = useState([]);
   const [toggleCleared, setToggleCleared] = useState(false);
 
+  const polabiaya = {
+    1: { ket: 'Fasilitasi' },
+    2: { ket: 'Kontribusi' },
+    3: { ket: 'Lain-lain' },
+  }
+
   const columns = useMemo(() => [
     {
       name: '#',
@@ -53,6 +59,11 @@ const Index = () => {
     {
       name: 'Jumlah (Orang)',
       selector: row => row.jumlah,
+    },
+    {
+      name: 'Pola Biaya',
+      cell: (row) =>
+        polabiaya[row.polabiaya].ket
     },
     {
       name: 'Verifikasi',
