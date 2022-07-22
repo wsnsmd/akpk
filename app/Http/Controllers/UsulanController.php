@@ -27,6 +27,7 @@ use App\Http\Requests\UsulanKabkotUpdateRequest;
 use App\Http\Requests\UbarStoreRequest;
 use App\Http\Requests\UbarUpdateRequest;
 
+use DB;
 use Storage;
 
 class UsulanController extends Controller
@@ -144,15 +145,17 @@ class UsulanController extends Controller
         $request = Request::all();
 
         $data = [];
+        DB::statement(DB::raw('set @rownum=0'));
         $data['usulan'] = UsulanResource::collection(
             Usulan::where('admin_id', $request['admin_id'])
                 ->where('tahun', $this->apps_tahun)
-                ->get()
+                ->get(['*', DB::raw('@rownum  := @rownum  + 1 AS rownum')])
         );
+        DB::statement(DB::raw('set @rownum=0'));
         $data['ubar'] = UbarResource::collection(
             Ubar::where('admin_id', $request['admin_id'])
                 ->where('tahun', $this->apps_tahun)
-                ->get()
+                ->get(['*', DB::raw('@rownum  := @rownum  + 1 AS rownum')])
         );
 
         return response()->json($data, 200);

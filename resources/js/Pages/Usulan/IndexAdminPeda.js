@@ -33,7 +33,6 @@ const Index = () => {
   const { data, setData, errors, post } = useForm({
     admin_id: '',
   });
-  let rowt = 1, rowbar = 1;
   const [loading, setLoading] = useState(false);
   const [dataTable, setDataTable] = useState(usulan);
   const [dtUbar, setDtUbar] = useState(ubar);
@@ -43,8 +42,7 @@ const Index = () => {
   const colUsulan = useMemo(() => [
     {
       name: '#',
-      cell: (id) =>
-        <span>{getRows()}</span>,
+      selector: row => row.rownum,
       width: '70px',
     },
     {
@@ -89,8 +87,7 @@ const Index = () => {
   const colUbar = useMemo(() => [
     {
       name: '#',
-      cell: (id) =>
-        <span>{getRowsUbar()}</span>,
+      selector: row => row.rownum,
       width: '70px',
     },
     {
@@ -138,13 +135,6 @@ const Index = () => {
       rowt = 1;
 
     return rowt++;
-  }
-
-  const getRowsUbar = () => {
-    if(rowbar > dtUbar.length)
-      rowbar = 1;
-    
-    return rowbar++;
   }
 
   function getDataTable() {

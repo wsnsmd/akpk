@@ -43,8 +43,7 @@ const Index = () => {
   const columns = useMemo(() => [
     {
       name: '#',
-      cell: (id) =>
-        <span>{getRows()}</span>,
+      selector: row => row.rownum,
       width: '70px',
     },
     {
@@ -89,8 +88,7 @@ const Index = () => {
   const colUbar = useMemo(() => [
     {
       name: '#',
-      cell: (id) =>
-        <span>{getRowsUbar()}</span>,
+      selector: row => row.rownum,
       width: '70px',
     },
     {
@@ -202,13 +200,13 @@ const Index = () => {
           <div className="flex m-6">
             <SelectInput
               className="w-full pr-3 lg:w-6/12"
-              label="Perangkat Daerah"
+              label="Kabupaten/Kota"
               name="admin_id"
               errors={errors.admin_id}
               value={data.admin_id}
               onChange={e => setData('admin_id', e.target.value)}
             >
-              <option value="" disabled>-- Pilih Perangkat Daerah --</option>
+              <option value="" disabled>-- Pilih Kabupaten/Kota --</option>
               {kabkot.map(({admin_id, nama}) => {
                 return (
                   <option value={admin_id} key={admin_id}>{nama}</option>
@@ -228,7 +226,7 @@ const Index = () => {
           </div>
         </form>
       </div>
-      <div className="overflow-x-auto bg-white rounded shadow">
+      <div className="overflow-x-auto bg-white rounded shadow border-b-2">
         <DataTable
           title={<TitleHeader title='Usulan Pelatihan' />}
           selectableRows

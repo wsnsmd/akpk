@@ -27,6 +27,7 @@ class UsulanResource extends JsonResource
             'lampiran' => $this->lampiran,
             'deleted_at' => $this->deleted_at,
             'pelatihan' => $this->pelatihan->only('id', 'jenis_id', 'rumpun_id'),
+            'rownum' => $this->rownum,
         ];
     }
 }
