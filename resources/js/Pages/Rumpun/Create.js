@@ -25,7 +25,7 @@ const Create = () => {
               href={route('rumpun')}
               className="text-yellow-600 hover:text-yellow-700"
             >
-              Rumpun
+              Jenis Pelatihan
             </InertiaLink>
             <span className="mx-2 font-medium text-yellow-600">/</span>
             Tambah Data
@@ -82,6 +82,6 @@ const Create = () => {
   );
 };
 
-Create.layout = page => <Layout title="Tambah Rumpun" children={page} />;
+Create.layout = page => <Layout title="Tambah Jenis Pelatihan" children={page} />;
 
 export default Create;

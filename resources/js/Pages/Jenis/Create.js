@@ -70,6 +70,6 @@ const Create = () => {
   );
 };
 
-Create.layout = page => <Layout title="Tambah Jenis Pelatihan" children={page} />;
+Create.layout = page => <Layout title="Tambah Rumpun" children={page} />;
 
 export default Create;

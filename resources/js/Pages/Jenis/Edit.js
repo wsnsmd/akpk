@@ -26,7 +26,7 @@ const Edit = () => {
               href={route('jenis')}
               className="text-yellow-600 hover:text-yellow-700"
             >
-              Jenis Pelatihan
+              Rumpun
             </InertiaLink>
             <span className="mx-2 font-medium text-yellow-600">/</span>
             {jenis.nama}

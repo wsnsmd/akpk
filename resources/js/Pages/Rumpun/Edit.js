@@ -9,7 +9,7 @@ const Edit = () => {
   const { data, setData, errors, post, processing } = useForm({
     id: rumpun.id,
     kode: rumpun.kode || '',
-    nama: rumpun.nama || '',    
+    nama: rumpun.nama || '',
     ket: rumpun.ket || '',
     _method: 'PUT',
   });
@@ -28,7 +28,7 @@ const Edit = () => {
               href={route('rumpun')}
               className="text-yellow-600 hover:text-yellow-700"
             >
-              Rumpun
+              Jenis Pelatihan
             </InertiaLink>
             <span className="mx-2 font-medium text-yellow-600">/</span>
             {rumpun.nama}

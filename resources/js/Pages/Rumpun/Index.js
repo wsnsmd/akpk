@@ -32,7 +32,7 @@ const Index = () => {
     <div>
       <div className="border-b border-gray-200 px-4 py-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <div className="flex-1 min-w-0 py-2">
-          <h1 className="text-lg font-medium leading-6 text-gray-900 sm:truncate">Rumpun</h1>
+          <h1 className="text-lg font-medium leading-6 text-gray-900 sm:truncate">Jenis Pelatihan</h1>
         </div>
         <div className="mt-4 flex sm:mt-0 sm:ml-4">
           <InertiaLink
@@ -164,6 +164,6 @@ const Index = () => {
   );
 };
 
-Index.layout = page => <Layout title="Rumpun" children={page} />;
+Index.layout = page => <Layout title="Jenis Pelatihan" children={page} />;
 
 export default Index;

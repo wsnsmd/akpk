@@ -30,7 +30,7 @@ const Edit = () => {
     setData('rumpun_id', e.id);
   }
 
-  function handleDelete(rid) {    
+  function handleDelete(rid) {
     post(route('jenis.rumpun.destroy', [jenis.id, rid]));
   }
 
@@ -47,7 +47,7 @@ const Edit = () => {
               href={route('jenis')}
               className="text-yellow-600 hover:text-yellow-700"
             >
-              Jenis Pelatihan
+              Rumpun
             </InertiaLink>
             <span className="mx-2 font-medium text-yellow-600">/</span>
             <InertiaLink
@@ -173,8 +173,8 @@ const Edit = () => {
                     </h5>
                   </div>
                   <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                    <Listbox 
-                      value={selected} 
+                    <Listbox
+                      value={selected}
                       onChange={handleListBox}
                     >
                       {({ open }) => (
