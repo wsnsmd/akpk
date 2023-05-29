@@ -9,7 +9,8 @@ import {
   ClipboardListIcon,
   GlobeIcon,
   CollectionIcon,
-  NewspaperIcon
+  NewspaperIcon,
+  BookOpenIcon
 } from '@heroicons/react/outline'
 
 
@@ -26,15 +27,19 @@ export default ({ className }) => {
         Master
       </h3>
       <MainMenuItem text="Tahun" link="tahun" Icon={CalendarIcon} />
-      <MainMenuItem text="Jenis Pelatihan" link="jenis" Icon={ClipboardListIcon} />
+      <MainMenuItem text="Rumpun" link="jenis" Icon={ClipboardListIcon} />
       <MainMenuItem text="Kabupaten/Kota" link="kabkot" Icon={GlobeIcon} />
       <MainMenuItem text="Perangat Daerah" link="peda" Icon={OfficeBuildingIcon} />
-      <MainMenuItem text="Rumpun" link="rumpun" Icon={CollectionIcon} />
+      <MainMenuItem text="Jenis Pelatihan" link="rumpun" Icon={CollectionIcon} />
       <MainMenuItem text="Pelatihan" link="pelatihan" Icon={NewspaperIcon} />
       <h3 className="px-2 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
         Admin
       </h3>
       <MainMenuItem text="Pengguna" link="pengguna" Icon={UsersIcon} />
+      <h3 className="px-2 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+        Manual
+      </h3>
+      <MainMenuItem text="Penggunaan" link="dashboard" Icon={BookOpenIcon} />
     </nav>
   );
 };

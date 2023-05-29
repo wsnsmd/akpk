@@ -15,6 +15,7 @@ use App\Models\Pelatihan;
 use App\Models\Jenis;
 use App\Http\Requests\PelatihanStoreRequest;
 use App\Http\Requests\PelatihanUpdateRequest;
+use DB;
 
 class PelatihanController extends Controller
 {
@@ -118,10 +119,11 @@ class PelatihanController extends Controller
 
     public function search() 
     {
+        DB::statement(DB::raw('set @rownum=0'));
         return Inertia::render('Pelatihan/Search', [
             'pelatihan' => PelatihanResource::collection(
                 Pelatihan::orderBy('jenis_id')
-                ->get()
+                ->get(['*', DB::raw('@rownum := @rownum  + 1 AS rownum')])
             ),
             'jenis' => JenisResource::collection(Jenis::all()),
         ]);

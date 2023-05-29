@@ -19,7 +19,6 @@ const Index = () => {
     rumpun_id: '',
     nama: '',
   });
-  let rowt = 1;
   const [loading, setLoading] = useState(false);
   const [dataTable, setDataTable] = useState(pelatihan);
 
@@ -34,7 +33,7 @@ const Index = () => {
       {rumpun.nama} ({rumpun.kode})
     </option>
   ));
-  
+
   function handleJenisChange(e) {
     setData('jenis_id', e.target.value);
   }
@@ -46,31 +45,39 @@ const Index = () => {
   const columns = useMemo(() => [
     {
       name: '#',
-      cell: (id) =>
-        <span>{getRows()}</span>,
+      selector: row => row.rownum,
       width: '70px',
     },
     {
       name: 'Jenis',
-      selector: row => row.jenis.nama,
+      maxWidth: '600px',
+      cell: row => (
+        <span>{row.jenis.nama}</span>
+      ),
     },
     {
       name: 'Rumpun',
+      maxWidth: '200px',
       selector: row => row.rumpun.nama,
     },
     {
       name: 'Nama Pelatihan',
-      selector: row => row.nama
+      maxWidth: '600px',
+      // selector: row => row.nama
+      cell: row => (
+        <span className='py-2'>{row.nama}</span>
+      ),
     },
     {
       name: 'Deskripsi',
+      maxWidth: '600px',
       selector: row => row.deskripsi
     },
   ])
 
   const getRows = () => {
-    if(rowt > pelatihan.length)
-      rowt = 1;
+    if(rowt > (page * 10))
+      rowt = ((page - 1) * 10) + 1    
 
     return rowt++;
   }
@@ -100,9 +107,9 @@ const Index = () => {
       </div>
       <div>
         <form name="searchForm">
-          <div className="flex m-6">
+          <div className="flex flex-wrap m-6">
             <SelectInput
-              className="w-full pr-3 lg:w-3/12"
+              className="w-full lg:pr-3 lg:w-6/12"
               name="jenis_id"
               value={data.jenis_id}
               onChange={handleJenisChange}
@@ -111,7 +118,7 @@ const Index = () => {
               {optionJenis}
             </SelectInput>
             <SelectInput
-              className="w-full pr-3 lg:w-2/12"
+              className="w-full lg:pr-3 lg:w-6/12"
               name="rumpun_id"
               value={data.rumpun_id}
               onChange={handleRumpunChange}
@@ -120,7 +127,7 @@ const Index = () => {
               {optionRumpun}
             </SelectInput>
             <TextInput
-              className="w-full pr-3 lg:w-3/12"
+              className="w-full lg:pr-3 lg:w-11/12"
               name="nama"
               placeholder="Pelatihan..."
               value={data.nama}
@@ -129,7 +136,7 @@ const Index = () => {
             <LoadingButton
               loading={loading}
               type="button"
-              className="w-full lg:w-1/12 h-10 justify-center border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+              className="w-full lg:w-1/12 h-10 mt-2 lg:mt-0 justify-center border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
               onClick={handleCari}
             >
               Cari

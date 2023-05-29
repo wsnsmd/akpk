@@ -18,9 +18,9 @@ const Index = () => {
   const { admin } = usePage().props;
   const {
     data,
-    meta: { links }
+    meta: { links, current_page }
   } = admin;
-  let rowt = 1;
+  let rowt = ((current_page - 1) * 15) + 1 ;
 
   function renderLevel(id) {
     var ket;
@@ -41,6 +41,8 @@ const Index = () => {
       }
     })
   }
+
+  console.log(usePage().props)
 
   return (
     <div>

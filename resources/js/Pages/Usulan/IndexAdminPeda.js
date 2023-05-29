@@ -47,7 +47,9 @@ const Index = () => {
     },
     {
       name: 'Pelatihan',
-      selector: row => row.pnama,
+      cell: row => (
+        <span className='py-2'>{row.pnama}</span>
+      ),
     },
     {
       name: 'Jumlah (Orang)',
@@ -92,15 +94,22 @@ const Index = () => {
     },
     {
       name: 'Pelatihan',
-      selector: row => row.nama,
+      maxWidth: '300px',
+      cell: row => (
+        <span className='py-2'>{row.nama}</span>
+      ),
     },
     {
       name: 'Jenis',
+      maxWidth: '200px',
       selector: row => row.param,
     },
     {
       name: 'Keterangan',
-      selector: row => row.keterangan,
+      cell: row => (
+        <span className='py-2'>{row.keterangan}</span>
+      ),
+      
     },
     {
       cell: (row) =>

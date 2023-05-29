@@ -54,7 +54,9 @@ const Index = () => {
     },
     {
       name: 'Pelatihan',
-      selector: row => row.pnama,
+      cell: row => (
+        <span className='py-2'>{row.pnama}</span>
+      ),
     },
     {
       name: 'Jumlah (Orang)',
@@ -104,15 +106,22 @@ const Index = () => {
     },
     {
       name: 'Pelatihan',
-      selector: row => row.nama,
+      maxWidth: '300px',
+      cell: row => (
+        <span className='py-2'>{row.nama}</span>
+      ),
     },
     {
       name: 'Jenis',
+      maxWidth: '200px',
       selector: row => row.param,
     },
     {
       name: 'Keterangan',
       selector: row => row.keterangan,
+      cell: row => (
+        <span className='py-2'>{row.keterangan}</span>
+      ),
     },
     {
       cell: (row) =>
@@ -210,7 +219,7 @@ const Index = () => {
         <form name="searchForm">
           <div className="flex m-6">
             <SelectInput
-              className="w-full pr-3 lg:w-6/12"
+              className="w-full pr-3 sm:w-10/12"
               label="Kabupaten/Kota"
               name="admin_id"
               errors={errors.admin_id}
@@ -224,7 +233,7 @@ const Index = () => {
                 );
               })}
             </SelectInput>
-              <div className="w-full pr-3 lg:w-1/12 mt-5">
+              <div className="w-full pr-3 sm:w-2/12 mt-5">
               <LoadingButton
                 loading={loading}
                 type="button"

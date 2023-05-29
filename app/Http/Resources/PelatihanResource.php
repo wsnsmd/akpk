@@ -24,7 +24,8 @@ class PelatihanResource extends JsonResource
             'is_tampil' => $this->is_tampil,
             'deleted_at' => $this->deleted_at,
             'jenis' => $this->jenis->only('id', 'nama'),
-            'rumpun' => $this->rumpun->only('id', 'kode', 'nama'),            
+            'rumpun' => $this->rumpun->only('id', 'kode', 'nama'),
+            'rownum' => $this->rownum,
         ];
     }
 }
