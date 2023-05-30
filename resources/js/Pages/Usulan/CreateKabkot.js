@@ -157,7 +157,7 @@ const Create = () => {
                 value={data.rumpun_id}
                 onChange={handleRumpunChange}
               >
-                <option value="" disabled>-- Pilih Rumpun --</option>
+                <option value="" disabled>-- Pilih Pelatihan --</option>
                 {optionRumpun}
               </SelectInput>
               <div className="w-full pb-4 pr-6">

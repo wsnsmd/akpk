@@ -49,14 +49,14 @@ const Index = () => {
       width: '70px',
     },
     {
-      name: 'Jenis',
+      name: 'Rumpun',
       maxWidth: '600px',
       cell: row => (
         <span>{row.jenis.nama}</span>
       ),
     },
     {
-      name: 'Rumpun',
+      name: 'Jenis',
       maxWidth: '200px',
       selector: row => row.rumpun.nama,
     },
@@ -114,7 +114,7 @@ const Index = () => {
               value={data.jenis_id}
               onChange={handleJenisChange}
             >
-              <option value="">-- Pilih Semua Jenis --</option>
+              <option value="">-- Pilih Semua Rumpun --</option>
               {optionJenis}
             </SelectInput>
             <SelectInput
@@ -123,7 +123,7 @@ const Index = () => {
               value={data.rumpun_id}
               onChange={handleRumpunChange}
             >
-              <option value="">-- Pilih Semua Rumpun --</option>
+              <option value="">-- Pilih Semua Jenis --</option>
               {optionRumpun}
             </SelectInput>
             <TextInput
