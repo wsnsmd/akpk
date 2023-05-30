@@ -40,14 +40,14 @@ const Create = () => {
             <div className="flex flex-wrap p-8 -mb-8 -mr-6">
               <SelectInput
                 className="w-full pb-4 pr-6"
-                label="Jenis Pelatihan"
+                label="Rumpun Pelatihan"
                 name="jenis"
                 errors={errors.param}
                 value={data.param}
                 onChange={e => setData('param', e.target.value)}
                 require={true}
               >
-                <option value="" disabled>-- Pilih Jenis --</option>
+                <option value="" disabled>-- Pilih Rumpun --</option>
                 <option value="Teknis">Teknis</option>
                 <option value="Fungsional">Fungsional</option>
                 <option value="Lain-lain">Lain-lain</option>

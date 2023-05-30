@@ -27,7 +27,7 @@ class UsulanKabkotStoreRequest extends FormRequest
             'pelatihan_id' => ['required'],
             'polabiaya' => ['required'],
             'jumlah' => ['required', 'min:1'],
-            'lampiran' => ['required', 'mimetypes:application/pdf', 'max:1024'],
+            'lampiran' => ['nullable', 'mimetypes:application/pdf', 'max:1024'],
         ];
     }
 }

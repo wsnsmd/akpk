@@ -120,6 +120,9 @@ class UsulanController extends Controller
 
     public function indexAdminPeda()
     {
+        if(!Auth::user()->hasRole('admin'))
+            abort(403);
+
         $peda = PedaResource::collection(
                     Peda::orderBy('nama')
                         ->get()
@@ -163,6 +166,9 @@ class UsulanController extends Controller
 
     public function indexAdminKabkot()
     {
+        if(!Auth::user()->hasRole('admin'))
+            abort(403);
+            
         $kabkot = KabkotResource::collection(
                     Kabkot::orderBy('nama')
                         ->get()
@@ -223,11 +229,8 @@ class UsulanController extends Controller
         {
             $user = Auth::user();
             $pelatihan_id = $request->pelatihan_id;
-            $jumlah = $request->jumlah;
-            $file = $request->file('lampiran');
             $pelatihan = Pelatihan::find($pelatihan_id);
-            $nama_file = time().'.'.$file->getClientOriginalExtension();
-            $path = $request->lampiran->storeAs('public/files/lampiran', $nama_file);            
+            $jumlah = $request->jumlah;
             $usulan = new Usulan;
             $usulan->admin_id = $user->id;
             $usulan->tahun = $this->apps_tahun;
@@ -238,7 +241,13 @@ class UsulanController extends Controller
             $usulan->pbiaya = $pelatihan->biaya;
             $usulan->jumlah = $jumlah;
             $usulan->level = $user->level;
-            $usulan->lampiran = $path;
+            if($request->hasFile('lampiran')) 
+            {
+                $file = $request->file('lampiran');
+                $nama_file = time().'.'.$file->getClientOriginalExtension();
+                $path = $request->lampiran->storeAs('public/files/lampiran', $nama_file);
+                $usulan->lampiran = $path;
+            }
 
             if($usulan->save())
             {
@@ -330,11 +339,8 @@ class UsulanController extends Controller
         {
             $user = Auth::user();
             $pelatihan_id = $request->pelatihan_id;
-            $jumlah = $request->jumlah;
-            $file = $request->file('lampiran');
             $pelatihan = Pelatihan::find($pelatihan_id);
-            $nama_file = time().'.'.$file->getClientOriginalExtension();
-            $path = $request->lampiran->storeAs('public/files/lampiran', $nama_file);            
+            $jumlah = $request->jumlah;         
             $usulan = new Usulan;
             $usulan->admin_id = $user->id;
             $usulan->tahun = $this->apps_tahun;
@@ -346,7 +352,13 @@ class UsulanController extends Controller
             $usulan->jumlah = $jumlah;
             $usulan->polabiaya = $request->polabiaya;
             $usulan->level = $user->level;
-            $usulan->lampiran = $path;
+            if($request->hasFile('lampiran')) 
+            {
+                $file = $request->file('lampiran');
+                $nama_file = time().'.'.$file->getClientOriginalExtension();
+                $path = $request->lampiran->storeAs('public/files/lampiran', $nama_file); 
+                $usulan->lampiran = $path;
+            }  
 
             if($usulan->save())
             {

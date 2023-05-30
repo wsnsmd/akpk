@@ -141,7 +141,7 @@ const Create = () => {
             <div className="flex flex-wrap p-8 -mb-8 -mr-6">
               <SelectInput
                 className="w-full pb-4 pr-6"
-                label="Jenis Pelatihan"
+                label="Rumpun Pelatihan"
                 name="jenis_id"
                 errors={errors.jenis_id}
                 value={data.jenis_id}
@@ -151,7 +151,7 @@ const Create = () => {
               </SelectInput>
               <SelectInput
                 className="w-full pb-4 pr-6"
-                label="Rumpun Pelatihan"
+                label="Jenis Pelatihan"
                 name="rumpun_id"
                 errors={errors.rumpun_id}
                 value={data.rumpun_id}
@@ -264,7 +264,7 @@ const Create = () => {
                 accept="application/pdf"
                 errors={errors.lampiran}
                 value={data.lampiran}
-                require={true}
+                require={false}
                 onChange={lampiran => setData('lampiran', lampiran)}
               />
             </div>
