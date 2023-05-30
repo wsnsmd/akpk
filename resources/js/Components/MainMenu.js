@@ -5,7 +5,8 @@ import {
   OfficeBuildingIcon,
   NewspaperIcon,
   DocumentAddIcon,
-  SearchIcon
+  SearchIcon,
+  BookOpenIcon
 } from '@heroicons/react/outline';
 
 export default ({ className }) => {
