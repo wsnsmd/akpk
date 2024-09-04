@@ -12,7 +12,7 @@ export default () => {
   const { data, setData, errors, post, processing } = useForm({
     username: '',
     password: '',
-    tahun: setting.tahun
+    tahun: '',
   });
 
   const optionTahun = tahun.map((tah) => (
@@ -61,6 +61,7 @@ export default () => {
               value={data.tahun}
               onChange={e => setData('tahun', e.target.value)}
             >
+              <option value="" disabled selected>-- Pilih Tahun --</option>
               {optionTahun}
             </SelectInput>
             <div>

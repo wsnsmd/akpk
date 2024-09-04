@@ -54,16 +54,17 @@ class AdminAuthController extends Controller
         ]);
     }
 
-    public function handleLogin(Request $request)
-    {        
-        if(Auth::guard('webadmin')->attempt($request->only(['username', 'password'])))
-            return redirect()->route('dashboard');
+    // public function handleLogin(Request $request)
+    // {
+    //     if(Auth::guard('webadmin')->attempt($request->only(['username', 'password'])))
+    //         return redirect()->route('dashboard');
 
-        return redirect()->back()->with('error', 'Invalid Credentials');
-    }
+    //     return redirect()->back()->with('error', 'Invalid Credentials');
+    // }
 
     protected function authenticated(Request $request, $user)
     {
+        // dd($user);
         $request->session()->put('apps_tahun', $request->tahun);
     }
 
@@ -82,7 +83,7 @@ class AdminAuthController extends Controller
         Auth::guard('webadmin')->logout();
         return redirect()->route('login');
     }
-    
+
     // protected function loggedOut(Request $request)
     // {
     //     $request->session()->flush();
