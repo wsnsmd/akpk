@@ -29,7 +29,7 @@ const TitleHeader = ({ title='Default' }) => {
 }
 
 const Index = () => {
-  const { usulan, ubar, peda } = usePage().props;
+  const { usulan, ubar, peda, csrf_token } = usePage().props;
   const { data, setData, errors, post } = useForm({
     admin_id: '',
   });
@@ -57,7 +57,7 @@ const Index = () => {
     },
     {
       name: 'Verifikasi',
-      cell: (row) => 
+      cell: (row) =>
         (row.is_verify == 1)
           ? <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
               Sudah
@@ -109,7 +109,7 @@ const Index = () => {
       cell: row => (
         <span className='py-2'>{row.keterangan}</span>
       ),
-      
+
     },
     {
       cell: (row) =>
@@ -148,6 +148,7 @@ const Index = () => {
 
   function getDataTable() {
     axios.post(route('usulan.data.show'), {
+      _token: csrf_token,
       admin_id: data.admin_id,
     }).then((res) => {
       if(res) {
