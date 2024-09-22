@@ -39,7 +39,7 @@ class HandleInertiaRequests extends Middleware
      * @return array
      */
     public function share(Request $request)
-    {        
+    {
         return array_merge(parent::share($request), [
             'auth' => function () {
                 return [
@@ -65,6 +65,7 @@ class HandleInertiaRequests extends Middleware
                     'inputdata' => $setting[4]->value,
                 ];
             },
+            'csrf_token' => csrf_token(),
         ]);
     }
 }
